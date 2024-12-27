@@ -29,6 +29,25 @@
 Код, демонстрирующий работу библиотеки представлен в блокноте
 https://github.com/Krivokulskiy/YOLO-Object-Count/blob/main/YOLO%20hackotone.ipynb
 
+Для оубчения модели необхожимо в словаре train_config указать нужные параметры для обучения, а именно:
+* путь для валидационного и обучаещего датасета - train_data_path, valid_data_path соответсвенно.<br>
+* is_custom_model - является ли модель для обучения собственной архитектурой (True/False)
+* img_size - размер фотографии
+* num_epochs - количество эпох
+* batch_size - размер батчаей
+* lr - learning_rate для градиентного спуска
+
+В методе train_model класса Model_train можно указать нужную функцию потерь и тип градиентного спуска, заменив значения переменных <br>
+criterion = nn.CrossEntropyLoss()<br>
+optimizer = optim.Adam(self.model.parameters(), lr=self.train_config['lr'])<br>
+на нужные<br>
+
+в train_albumentations_transforms можно заменит параметры аугментации на нужные.
+Для запуск тестирования модели необходимо в словаре test_config указать нужные параметры. Описание параметров совпадает с параметрами для train_config.
+
+Более подробные описания методов представленна в коде в комментариях.
+
+
 
 
 
